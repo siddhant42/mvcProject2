@@ -1,24 +1,29 @@
 package com.data;
 
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-
+import org.springframework.context.annotation.ImportResource;
+import org.springframework.context.annotation.PropertySource;
+@PropertySource("classpath:/com/resources/ValidationMessages.properties")
 public class Spitter {
 	private Long id;
 	@NotNull
-	@Size(min=5, max=16)
+	@Size(min=5, max=16, message="${username.size}")
 	private String username;
 	@NotNull
-	@Size(min=5, max=25)
+	@Size(min=5, max=25, message="${password.size}")
 	private String password;
 	@NotNull
-	@Size(min=2, max=30)
+	@Size(min=2, max=30 , message="${username.size}")
 	private String firstName;
 	@NotNull
-	@Size(min=2, max=30)
+	@Size(min=2, max=30, message="${lastName.size}")
 	private String lastName;
 	
 	public Spitter() {
@@ -81,5 +86,11 @@ public class Spitter {
 	public int hashCode() {
 		return HashCodeBuilder.reflectionHashCode(this, "username","password","firstName","lastName");
 	}
-
+/*public static void main(String[] args) {
+	Spitter s = new Spitter("s","s","s","");
+	ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+    Validator validator = factory.getValidator();
+    validator.validate(s);
+	System.out.println(s.getFirstName()+" "+s.getLastName()+" "+s.getUsername());
+}*/
 }

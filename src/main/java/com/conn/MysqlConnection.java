@@ -7,14 +7,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class MysqlConnection {
-static Connection getConnection() throws SQLException{
+public static Connection getConnection() throws SQLException,ClassNotFoundException {
 	String url = "jdbc:mysql://localhost:3306/spittr";
 	String username = "root";
 	String password = "root";
+	Class.forName("com.mysql.jdbc.Driver");
 	Connection conn = DriverManager.getConnection(url, username, password);
 	return conn;
 }
-public static void main(String[] args) throws SQLException{
+/*public static void main(String[] args) throws SQLException{
 	Connection conn = getConnection();
 	Statement stmt = conn.createStatement();
 	String query = "select * from spitter";
@@ -27,5 +28,5 @@ public static void main(String[] args) throws SQLException{
 		System.out.println(rs.getString(5)+" ");
 	}
 	conn.close();
-}
+}*/
 }

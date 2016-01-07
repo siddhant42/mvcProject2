@@ -1,5 +1,7 @@
 package com.controllers;
 
+import java.sql.SQLException;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,19 +25,22 @@ public class SpitterController {
 		this.spitterRepository = spitterRepository;
 	}
 	@RequestMapping(value="/register", method=RequestMethod.GET)
-	public String showRegistrationForm() {
+	public String showRegistrationForm(Model model) {
+		Spitter spitter = new Spitter();
+		model.addAttribute(spitter);
 		return "registerForm";
 	}
 	@RequestMapping(value="/register", method=RequestMethod.POST)
-	public String processRegistration(@Valid Spitter spitter,Errors errors) {
+	public String processRegistration(@Valid Spitter spitter,Errors errors,Model model) throws SQLException,ClassNotFoundException  {
 		if (errors.hasErrors()) {
 		return "registerForm";
 		}
 		spitterRepository.save(spitter);
+		model.addAttribute(spitter);
 		return "redirect:/spitter/" + spitter.getUsername();
 	}
 	@RequestMapping(value="/{username}", method=RequestMethod.GET)
-	public String showSpitterProfile(@PathVariable String username, Model model) {
+	public String showSpitterProfile(@PathVariable String username, Model model) throws SQLException,ClassNotFoundException  {
 	Spitter spitter = spitterRepository.findByUsername(username);
 	model.addAttribute(spitter);
 	return "profile";

@@ -1,6 +1,8 @@
 package com.data;
 
+import java.sql.SQLException;
+
 public interface SpitterRepository {
-Spitter save(Spitter spitter);
-Spitter findByUsername(String userName);
+boolean save(Spitter spitter) throws SQLException,ClassNotFoundException ;
+Spitter findByUsername(String userName) throws SQLException,ClassNotFoundException ;
 }

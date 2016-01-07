@@ -28,11 +28,9 @@ public class SpitterControllerTest {
 	@Test
 	public void shouldProcessRegistration() throws Exception {
 		
-		Spitter unsaved =
-				new Spitter("jbauer", "24hours", "Jack", "Bauer");
-		Spitter saved =
-				new Spitter(24L, "jbauer", "24hours", "Jack", "Bauer");
-		Mockito.when(mockRepository.save(unsaved)).thenReturn(saved);
+		Spitter unsaved = new Spitter("jbauer", "24hours", "Jack", "Bauer");
+		//Spitter saved =	new Spitter(24L, "jbauer", "24hours", "Jack", "Bauer");
+		Mockito.when(mockRepository.save(unsaved)).thenReturn(true);
 		
 		MockMvc mockMvc = standaloneSetup(controller).build();
 		mockMvc.perform(post("/spitter/register")
