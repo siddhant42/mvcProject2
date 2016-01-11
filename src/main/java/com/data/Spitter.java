@@ -1,5 +1,8 @@
 package com.data;
 
+import java.io.File;
+
+import javax.servlet.http.Part;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
@@ -10,22 +13,24 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.PropertySource;
-@PropertySource("classpath:/com/resources/ValidationMessages.properties")
+import org.springframework.web.multipart.MultipartFile;
+//@PropertySource("classpath:/com/resources/ValidationMessages.properties")
 public class Spitter {
 	private Long id;
 	@NotNull
-	@Size(min=5, max=16, message="${username.size}")
+	@Size(min=5, max=16, message="{username.size}")
 	private String username;
 	@NotNull
-	@Size(min=5, max=25, message="${password.size}")
+	@Size(min=5, max=25, message="{password.size}")
 	private String password;
 	@NotNull
-	@Size(min=2, max=30 , message="${username.size}")
+	@Size(min=2, max=30 , message="{username.size}")
 	private String firstName;
 	@NotNull
-	@Size(min=2, max=30, message="${lastName.size}")
+	@Size(min=2, max=30, message="{lastName.size}")
 	private String lastName;
-	
+	//@Size(message="{image.size}")
+	private Part profilePicture;
 	public Spitter() {
 		super();
 	}
@@ -76,6 +81,13 @@ public class Spitter {
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+	public Part getProfilePicture() {
+		return profilePicture;
+	}
+
+	public void setProfilePicture(Part profilePicture) {
+		this.profilePicture = profilePicture;
 	}
 
 	@Override

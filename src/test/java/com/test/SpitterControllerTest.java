@@ -25,7 +25,7 @@ public class SpitterControllerTest {
 	public void setUp() throws Exception {
 		MockitoAnnotations.initMocks(this);
 	}
-	@Test
+	//@Test
 	public void shouldProcessRegistration() throws Exception {
 		
 		Spitter unsaved = new Spitter("jbauer", "24hours", "Jack", "Bauer");

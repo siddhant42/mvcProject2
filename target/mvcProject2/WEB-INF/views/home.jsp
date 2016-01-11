@@ -10,7 +10,7 @@ href="<c:url value="/resources/style.css" />" > --%>
 </head>
 <body>
 <h1>Welcome to Spittr</h1><br>
-<a href="/spittles">Spittles</a> |
-<a href="/spitter/register">Register</a>
+<a href="spittles">Spittles</a> |
+<a href="spitter/register">Register</a>
 </body>
 </html>

@@ -19,14 +19,6 @@ import com.conn.MysqlConnection;
 public class SpitterRepositoryImpl implements SpitterRepository {
 	public boolean save(Spitter spitter) throws SQLException,ClassNotFoundException  {
 		int i=-1;
-		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-	    Validator validator = factory.getValidator();
-	    Set<ConstraintViolation<Spitter>> constraintViolations =
-	    		validator.validate(spitter);
-	    if(constraintViolations!=null){
-	    	 constraintViolations.iterator().next().getMessage();
-	    }
-	    else {
 		Connection conn = MysqlConnection.getConnection();
 		String query = "insert into spitter(username,password,firstName,lastName) values(?,?,?,?)";
 		PreparedStatement ps = conn.prepareStatement(query);
@@ -36,7 +28,7 @@ public class SpitterRepositoryImpl implements SpitterRepository {
 		ps.setString(4, spitter.getLastName());
 		i = ps.executeUpdate();
 		conn.close();
-	    }
+	    
 		if(i<0) return false;
 		return true;
 	

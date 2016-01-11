@@ -23,12 +23,14 @@ border: 2px solid red;
 </head>
 <body>
 <h1>Register</h1>
-<sf:form method="POST" commandName="spitter">
+<sf:form method="POST" commandName="spitter" enctype="multipart/form-data">
 <sf:errors path="*" element="div" cssClass="errors" />
 First Name: <sf:input path="firstName" /><br/>
 Last Name: <sf:input path="lastName" /><br/>
 Username: <sf:input path="username" /><br/>
 Password: <sf:password path="password" /><br/>
+Profile Picture:
+<sf:input type="file" path="profilePicture" accept="image/jpeg,image/png,image/gif" /><br/>
 <input type="submit" value="Register" />
 </sf:form>
 </body>
