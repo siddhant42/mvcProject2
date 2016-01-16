@@ -18,15 +18,12 @@ import com.exceptions.SpittleNotFoundException;
 public class SpittleController {
 	private SpittleRepository spittleRepository;
 	@Autowired
-	public SpittleController(
-			SpittleRepository spittleRepository) {
+	public SpittleController(SpittleRepository spittleRepository) {
 		this.spittleRepository = spittleRepository;
 	}
 	@RequestMapping(method=RequestMethod.GET)
 	public String spittles(Model model) {
-		model.addAttribute("spittle1",
-				spittleRepository.findSpittles(
-						Long.MAX_VALUE, 20));
+		model.addAttribute("spittle1",spittleRepository.findSpittles(Long.MAX_VALUE, 20));
 		return "spittles";
 	}
 	@RequestMapping(value="/{spittleId}", method=RequestMethod.GET)

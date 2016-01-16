@@ -10,17 +10,12 @@
 </head>
 <body>
 
-<p id="demo"></p>
+<p>Showing spittles</p>
 
-<script>
-var spittle1 = request.getAttribute("spittle1");
-var txt = "";
-for (var spittle in spittle1) {
-   txt += spittle.id + " "spittle.message+" "+spittle.time+" "+spittle.latitude+" "+spittle.longitude+"<br>"; 
-}
-
-document.getElementById("demo").innerHTML = txt;
-</script>
+<c:forEach items="${spittle1}" var="spittle" >
+<c:out value="${spittle.message}" /><br>
+<c:out value="${spittle.time}"/>
+</c:forEach>
 
 </body>
 <%-- <body>

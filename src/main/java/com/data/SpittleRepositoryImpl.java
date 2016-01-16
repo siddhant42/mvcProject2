@@ -62,9 +62,11 @@ public class SpittleRepositoryImpl implements SpittleRepository {
 		}
 		return sp;
 	}
-	/*public static void main(String[] args) throws SQLException,ClassNotFoundException {
+/*	public static void main(String[] args) throws SQLException,ClassNotFoundException {
 		SpittleRepository sr = new SpittleRepositoryImpl();
-		Spittle sp = sr.findOne(1);
-		System.out.println(sp.getMessage());
-	}*/
-}
+		List<Spittle> sp = sr.findSpittles(Long.MAX_VALUE, 20);
+		for(Spittle s:sp){
+			System.out.println(s.getMessage()+" "+s.getTime());
+		}*/
+	}
+
